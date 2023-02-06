@@ -1,6 +1,20 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+const path = require("path");
 
-module.exports = nextConfig
+/** @type {import('next').NextConfig} */
+module.exports = {
+  reactStrictMode: false,
+  webpack5: true,
+  webpack: (config) => {
+    config.resolve.fallback = { ...config.resolve.fallback, fs: false, os: false };
+    config.module.rules.push({
+      test: /\.mjs$/,
+      include: /node_modules/,
+      type: "javascript/auto",
+    });
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@solana/wallet-adapter-react": path.resolve("./node_modules/@solana/wallet-adapter-react")
+    }
+    return config;
+  },
+};
