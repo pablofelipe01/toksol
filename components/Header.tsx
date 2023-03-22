@@ -28,13 +28,13 @@ export const Header: React.FC = () => (
     w="full"
     paddingX={14}
     paddingY={2}
-    justifyContent="space-between"
+    justifyContent="center"
     alignItems="center"
     color="white"
     bg="#2d78be"
   >
     <HStack spacing={4}>
-      <Text fontSize="30px">Tok Sol</Text>
+      {/* <Text fontSize="30px"></Text> */}
     </HStack>
     <Box display={{ md: "block" }} flexBasis={{ base: "100%", md: "auto" }}>
       <HStack
